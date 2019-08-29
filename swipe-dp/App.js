@@ -28,20 +28,19 @@ export default class App extends Component {
     let {global_anim_val,screen} = this.state;
     return (
       <View style={[styles.container, {paddingTop: screen === 'call' ? 0 : 85}]}>
-        <BottomNav2/>
+       { screen === 'call' ? <CallPage setScreen={this.setScreen}/>: <>
+          <TopBar global_anim_val = {global_anim_val}/>
+          <ChatList animate_global = {this.animate_global} global_anim_val = {global_anim_val} setScreen={this.setScreen}/>
+          <BottomNav/>
+          </>}
       </View>
     );
   }
   
 }
 
-//  {/* { screen === 'call' ? <CallPage setScreen={this.setScreen}/>: <>
-//           <TopBar global_anim_val = {global_anim_val}/>
-//           <ChatList animate_global = {this.animate_global} global_anim_val = {global_anim_val} setScreen={this.setScreen}/>
-//           <BottomNav/>
-//           </>}
-//         {/* 
-//       */} */}
+ 
+        
 
 const styles = StyleSheet.create({
   container: {
